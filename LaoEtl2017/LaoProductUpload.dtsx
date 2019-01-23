@@ -1,0 +1,1228 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/23/2019 2:31:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="V2DEV025"
+  DTS:CreatorName="MMMHC\igonzalezp"
+  DTS:DTSID="{523EF8AB-5F8D-4AB0-A494-B29ED9E268B1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="LaoProductUpload"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{59A3B3ED-FAB9-4913-8782-0E822118951B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[JpRcj]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{D134F288-13A3-4623-A1A1-C75365A6098F}"
+      DTS:ObjectName="JpRcj">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Project\LaoEtl2017\Artifacts\JP &amp; RCJ - JEWELRY.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LayAwayOnline1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{34DF686D-73CA-4C3A-951D-69753396352F}"
+      DTS:ObjectName="LayAwayOnline1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=layawayonline1.database.windows.net;User ID=igp;Initial Catalog=LayAwayOnline;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARIpN+sDIc0GWuDEMpSvRIQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADWKtff8dS/I5s+CroXJtAiAAAAAASAAACgAAAAEAAAAMgsPGxmztM66Gm238T6+AcgAAAAKbs85gZqDvVnprPcrbprbQBTJYJz4oDyzVcwyMlsxAsUAAAAooXv7O2qkU2lkxpO1IfwhYC6hQY</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load JpRcj"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8CE323E1-793B-420D-8C3B-022E1EF920EA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load JpRcj"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load JpRcj\Convert Unicode"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convert Unicode"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[Item Number]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Item Number"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Item Number]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[Item Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Item Name"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Item Name]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[Image]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Image"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Image]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[Model]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Model"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Model]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[Retail Price]"
+                      cachedDataType="cy"
+                      cachedName="Retail Price"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Retail Price]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[Sales Price]"
+                      cachedDataType="cy"
+                      cachedName="Sales Price"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Sales Price]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[Discount]"
+                      cachedDataType="r8"
+                      cachedName="Discount"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Discount]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[Delivery Time]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Delivery Time"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Delivery Time]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[SIZE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SIZE"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[SIZE]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[Warranty]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Warranty"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Warranty]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input].Columns[COLOR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="COLOR"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[COLOR]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[ItemNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[ItemNumber]"
+                      name="ItemNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Item Number]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[ItemName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[ItemName]"
+                      name="ItemName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Item Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Description]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Image]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Image]"
+                      name="Image"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Image]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Model]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Model]"
+                      name="Model"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Model]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[RetailPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[RetailPrice]"
+                      name="RetailPrice"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Retail Price]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[SalesPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[SalesPrice]"
+                      name="SalesPrice"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Sales Price]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Discount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Discount]"
+                      name="Discount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Discount]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[DeliveryTime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[DeliveryTime]"
+                      name="DeliveryTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Delivery Time]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[SIZE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[SIZE]"
+                      name="SIZE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[SIZE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Warranty]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Warranty]"
+                      name="Warranty"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Warranty]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[COLOR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[COLOR]"
+                      name="COLOR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[COLOR]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load JpRcj\JpRcj"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="JpRcj"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load JpRcj\JpRcj.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[JpRcj]"
+                  connectionManagerRefId="Package.ConnectionManagers[JpRcj]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Item Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Item Number]"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Item Number]"
+                      name="Item Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Item Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Item Name]"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Item Name]"
+                      name="Item Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Description]"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Image]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Image]"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Image]"
+                      name="Image"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Model]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Model]"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Model]"
+                      name="Model"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Retail Price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Retail Price]"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Retail Price]"
+                      name="Retail Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Sales Price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Sales Price]"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Sales Price]"
+                      name="Sales Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Discount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Discount]"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Discount]"
+                      name="Discount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Delivery Time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Delivery Time]"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Delivery Time]"
+                      name="Delivery Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[SIZE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[SIZE]"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[SIZE]"
+                      name="SIZE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Warranty]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Warranty]"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[Warranty]"
+                      name="Warranty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[COLOR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[COLOR]"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].Columns[COLOR]"
+                      name="COLOR"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Item Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Item Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Item Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Item Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Image]"
+                      dataType="wstr"
+                      length="255"
+                      name="Image" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Model]"
+                      dataType="wstr"
+                      length="255"
+                      name="Model" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Retail Price]"
+                      dataType="cy"
+                      name="Retail Price" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Sales Price]"
+                      dataType="cy"
+                      name="Sales Price" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Discount]"
+                      dataType="r8"
+                      name="Discount" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Delivery Time]"
+                      dataType="wstr"
+                      length="255"
+                      name="Delivery Time" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[SIZE]"
+                      dataType="wstr"
+                      length="255"
+                      name="SIZE" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[Warranty]"
+                      dataType="wstr"
+                      length="255"
+                      name="Warranty" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output].ExternalColumns[COLOR]"
+                      dataType="wstr"
+                      length="255"
+                      name="COLOR" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Item Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Item Number]"
+                      name="Item Number" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Item Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Item Name]"
+                      name="Item Name" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Image]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Image]"
+                      name="Image" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Model]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Model]"
+                      name="Model" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Retail Price]"
+                      dataType="cy"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Retail Price]"
+                      name="Retail Price" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Sales Price]"
+                      dataType="cy"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Sales Price]"
+                      name="Sales Price" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Discount]"
+                      dataType="r8"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Discount]"
+                      name="Discount" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Delivery Time]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Delivery Time]"
+                      name="Delivery Time" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[SIZE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[SIZE]"
+                      name="SIZE" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Warranty]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[Warranty]"
+                      name="Warranty" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[COLOR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[COLOR]"
+                      name="COLOR" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load JpRcj\LayAwayOnline"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="LayAwayOnline"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[JpRcj]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load JpRcj\LayAwayOnline.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LayAwayOnline1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LayAwayOnline1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[ItemNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ItemNumber"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[itemnumber]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[ItemNumber]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[ItemName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ItemName"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[itemname]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[ItemName]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[Model]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Model"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[model]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Model]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[RetailPrice]"
+                      cachedDataType="cy"
+                      cachedName="RetailPrice"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[retailprice]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[RetailPrice]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[SalesPrice]"
+                      cachedDataType="cy"
+                      cachedName="SalesPrice"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[salesprice]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[SalesPrice]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[Discount]"
+                      cachedDataType="r8"
+                      cachedName="Discount"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Discount]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[SIZE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="SIZE"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[size]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[SIZE]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[Warranty]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Warranty"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[warranty]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Warranty]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[COLOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="COLOR"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[color]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[COLOR]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[Description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[Image]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Image"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[image]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[Image]" />
+                    <inputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].Columns[DeliveryTime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="DeliveryTime"
+                      externalMetadataColumnId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[deliverytime]"
+                      lineageId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output].Columns[DeliveryTime]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[itemnumber]"
+                      codePage="1252"
+                      dataType="text"
+                      name="itemnumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[itemname]"
+                      codePage="1252"
+                      dataType="text"
+                      name="itemname" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[model]"
+                      codePage="1252"
+                      dataType="text"
+                      name="model" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[retailprice]"
+                      dataType="cy"
+                      name="retailprice" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[salesprice]"
+                      dataType="cy"
+                      name="salesprice" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
+                      dataType="numeric"
+                      name="discount"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[deliverytime]"
+                      codePage="1252"
+                      dataType="text"
+                      name="deliverytime" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[size]"
+                      codePage="1252"
+                      dataType="text"
+                      name="size" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[warranty]"
+                      codePage="1252"
+                      dataType="text"
+                      name="warranty" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[color]"
+                      codePage="1252"
+                      dataType="text"
+                      name="color" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      codePage="1252"
+                      dataType="text"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input].ExternalColumns[image]"
+                      codePage="1252"
+                      dataType="text"
+                      name="image" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load JpRcj\LayAwayOnline.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load JpRcj\LayAwayOnline.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load JpRcj\LayAwayOnline.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load JpRcj\LayAwayOnline.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load JpRcj.Paths[Data Conversion Output]"
+              endId="Package\Load JpRcj\LayAwayOnline.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Load JpRcj\Convert Unicode.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load JpRcj.Paths[Excel Source Output]"
+              endId="Package\Load JpRcj\Convert Unicode.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Load JpRcj\JpRcj.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table JpRcj"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6F8E15A6-BF2E-461E-A5EF-73E248164885}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table JpRcj"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{34DF686D-73CA-4C3A-951D-69753396352F}"
+          SQLTask:SqlStatementSource="Truncate Table dbo.JpRcj" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9E66F1EA-FA40-4BED-AE95-4E4D1B2F39B5}"
+      DTS:From="Package\Truncate Table JpRcj"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load JpRcj" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Load JpRcj"
+          TopLeft="236,158" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Truncate Table JpRcj"
+          TopLeft="229,57" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="319,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17,59"
+              Start="0,0"
+              End="-17,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="-4,29.5" />
+                  <mssgle:LineSegment
+                    End="-13,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13,29.5"
+                    Point2="-17,29.5"
+                    Point3="-17,33.5" />
+                  <mssgle:LineSegment
+                    End="-17,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load JpRcj">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="106,42"
+          Id="Package\Load JpRcj\JpRcj"
+          TopLeft="393,213" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Load JpRcj\LayAwayOnline"
+          TopLeft="492,470" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load JpRcj\Convert Unicode"
+          TopLeft="673,292" />
+        <EdgeLayout
+          Id="Package\Load JpRcj.Paths[Excel Source Output]"
+          TopLeft="446,255">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="306,37"
+              Start="0,0"
+              End="306,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="4,18.5" />
+                  <mssgle:LineSegment
+                    End="302,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="302,18.5"
+                    Point2="306,18.5"
+                    Point3="306,22.5" />
+                  <mssgle:LineSegment
+                    End="306,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load JpRcj.Paths[Data Conversion Output]"
+          TopLeft="752,334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-184,136"
+              Start="0,0"
+              End="-184,128.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,64"
+                    Point2="0,68"
+                    Point3="-4,68" />
+                  <mssgle:LineSegment
+                    End="-180,68" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-180,68"
+                    Point2="-184,68"
+                    Point3="-184,72" />
+                  <mssgle:LineSegment
+                    End="-184,128.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load JpRcj\JpRcj">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load JpRcj\LayAwayOnline">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

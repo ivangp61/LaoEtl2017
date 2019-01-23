@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "LaoEtl2017", "LaoEtl2017\LaoEtl2017.dtproj", "{EE70F04F-9F52-4A81-B87B-D9E0B14D55DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE70F04F-9F52-4A81-B87B-D9E0B14D55DB}.Development|Default.ActiveCfg = Development
+		{EE70F04F-9F52-4A81-B87B-D9E0B14D55DB}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7841B9DB-D06D-4BDB-AB60-3FD7E46FB072}
+	EndGlobalSection
+EndGlobal
