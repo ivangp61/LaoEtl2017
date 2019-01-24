@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>LaoEtl2017</Name>
-    <LastWriteTime>2019-01-23T22:17:04.1135484Z</LastWriteTime>
+    <LastWriteTime>2019-01-24T22:35:13.445187Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>LaoProductUpload.dtsx</Name>
-      <LastWriteTime>2019-01-23T22:17:00.2881659Z</LastWriteTime>
+      <LastWriteTime>2019-01-24T22:35:07.1965622Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
